@@ -1,0 +1,2 @@
+./open-repo
+zsh: exec format error: ./open-repo

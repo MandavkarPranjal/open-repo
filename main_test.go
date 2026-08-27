@@ -17,7 +17,13 @@ func TestRepositoryPath(t *testing.T) {
 }
 
 func TestFrontendURL(t *testing.T) {
-	if got := frontendURL("Entire", "owner/repo"); got != "https://entire.io/gh/owner/repo" {
-		t.Fatal(got)
+	tests := map[string]string{
+		"Entire": "https://entire.io/gh/owner/repo",
+		"GitLab": "https://gitlab.com/owner/repo",
+	}
+	for frontend, want := range tests {
+		if got := frontendURL(frontend, "owner/repo"); got != want {
+			t.Errorf("frontendURL(%q, %q) = %q; want %q", frontend, "owner/repo", got, want)
+		}
 	}
 }

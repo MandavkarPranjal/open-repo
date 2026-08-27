@@ -62,8 +62,9 @@ func repositoryPath(raw string) (string, error) {
 
 func frontendURL(frontend, repoPath string) string {
 	prefixes := map[string]string{
-		"GitHub": "https://github.com/", "Better Hub": "https://beta.better-hub.com/",
-		"OpenGit": "https://open-git.com/", "Codeberg": "https://codeberg.org/",
+		"GitHub": "https://github.com/", "GitLab": "https://gitlab.com/",
+		"Better Hub": "https://beta.better-hub.com/",
+		"OpenGit":    "https://open-git.com/", "Codeberg": "https://codeberg.org/",
 		"Gitea": "https://gitea.com/", "Entire": "https://entire.io/gh/",
 		"Trylle": "https://trylle.com/", "GitCafe": "https://git.cafe/",
 	}

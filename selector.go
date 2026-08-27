@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var frontends = []string{"GitHub", "Better Hub", "OpenGit", "Codeberg", "Gitea", "Entire", "Trylle", "GitCafe"}
+var frontends = []string{"GitHub", "GitLab", "Better Hub", "OpenGit", "Codeberg", "Gitea", "Entire", "Trylle", "GitCafe"}
 
 func selectItem(prompt string, choices []string, popup bool) (string, bool, error) {
 	if fzf, err := exec.LookPath("fzf"); err == nil {

@@ -1,0 +1,1 @@
+remove release section from [README.md](README.md) and add mit license

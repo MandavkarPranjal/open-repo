@@ -1,0 +1,15 @@
+# Build artifacts
+/open-repo
+/open-repo.exe
+/bin/
+/dist/
+
+# Go tooling and coverage output
+*.test
+*.out
+coverage/
+
+# Local editor and OS files
+.DS_Store
+.vscode/
+.idea/

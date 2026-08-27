@@ -1,2 +1,3 @@
 {"time":"2026-08-27T16:22:45.367479178+05:30","level":"WARN","msg":"perf","session_id":"01a0429b-3e7f-7883-921f-60572df28dd7","component":"perf","op":"pre-push","duration_ms":5827,"slow":true,"steps.resolve_push_settings_ms":0,"steps.push_checkpoint_refs_ms":3466,"hook_type":"git"}
 {"time":"2026-08-27T16:47:46.207729327+05:30","level":"WARN","msg":"perf","session_id":"01a0429b-3e7f-7883-921f-60572df28dd7","component":"perf","op":"pre-push","duration_ms":2598,"slow":true,"steps.resolve_push_settings_ms":0,"hook_type":"git"}
+{"time":"2026-08-27T16:48:18.389585091+05:30","level":"WARN","msg":"perf","session_id":"01a0429b-3e7f-7883-921f-60572df28dd7","component":"perf","op":"pre-push","duration_ms":2375,"slow":true,"steps.resolve_push_settings_ms":0,"hook_type":"git"}

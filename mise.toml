@@ -1,0 +1,39 @@
+[tools]
+# Keep builds and tests reproducible across contributors and CI.
+go = "1.26.6"
+
+[tasks.build]
+description = "Build the open-repo binary"
+run = "go build -o open-repo ."
+
+[tasks.test]
+description = "Run all tests"
+run = "go test ./..."
+
+[tasks.fmt]
+description = "Format all Go source files"
+run = "gofmt -w ."
+
+[tasks.fmt-check]
+description = "Check that Go source files are formatted"
+run = "test -z \"$(gofmt -l .)\""
+
+[tasks.vet]
+description = "Run the Go static analyzer"
+run = "go vet ./..."
+
+[tasks.check]
+description = "Run formatting, tests, and static analysis"
+depends = ["fmt-check", "test", "vet"]
+
+[tasks.run]
+description = "Run open-repo from source"
+run = "go run ."
+
+[tasks.install]
+description = "Install open-repo into the Go binary directory"
+run = "go install ."
+
+[tasks.tidy]
+description = "Synchronize Go module dependencies"
+run = "go mod tidy"

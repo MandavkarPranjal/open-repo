@@ -20,6 +20,29 @@ Prebuilt binaries for Linux, macOS, and Windows are available on the
 
 ## Build locally
 
+This project uses [mise](https://mise.jdx.dev/) to pin the Go toolchain used
+for development. Install mise, then run this from the repository root:
+
+```sh
+mise install
+```
+
+The pinned Go version is `1.26.6`. Available development commands are:
+
+```sh
+mise run build       # Build the binary
+mise run test        # Run all tests
+mise run check       # Check formatting, run tests, and run go vet
+mise run fmt         # Format Go source files
+mise run fmt-check   # Fail if formatting is needed
+mise run vet         # Run static analysis
+mise run run         # Run open-repo from source
+mise run install     # Install open-repo with go install
+mise run tidy        # Update go.mod and go.sum
+```
+
+You can also run the default Go commands directly after `mise install`:
+
 ```sh
 go build -o open-repo .
 install -Dm755 open-repo ~/.local/bin/open-repo
@@ -40,5 +63,5 @@ GOOS=windows GOARCH=amd64 go build -o open-repo.exe .
 ## Verify
 
 ```sh
-go test ./...
+mise run check
 ```

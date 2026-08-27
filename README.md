@@ -4,7 +4,21 @@ A small cross-platform Go replacement for the `open-repo` Bash script. It
 reads fetch remotes from the current Git repository, lets you choose a remote
 and web frontend, then opens the resulting repository URL.
 
-## Build and install
+## Install
+
+If Go is installed, install the latest version directly from GitHub:
+
+```sh
+go install github.com/MandavkarPranjal/open-repo@latest
+```
+
+This installs `open-repo` into Go's binary directory (`$GOBIN`, or usually
+`$HOME/go/bin`). Make sure that directory is on your `PATH`.
+
+Prebuilt binaries for Linux, macOS, and Windows are available on the
+[Releases page](https://github.com/MandavkarPranjal/open-repo/releases).
+
+## Build locally
 
 ```sh
 go build -o open-repo .

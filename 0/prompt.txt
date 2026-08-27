@@ -1,0 +1,1 @@
+i want u to create an typescript or go lang project that recreate this bash script that open repo on browser with fzf or like fzf selector https://raw.githubusercontent.com/MandavkarPranjal/environment/refs/heads/main/home/scripts/open-repo

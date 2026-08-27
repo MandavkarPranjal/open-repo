@@ -1,6 +1,6 @@
 # open-repo
 
-A small cross-platform Go replacement for the `open-repo` Bash script. It
+A small cross-platform Go replacement for the [`open-repo`](https://raw.githubusercontent.com/MandavkarPranjal/environment/refs/heads/main/home/scripts/open-repo) Bash script. It
 reads fetch remotes from the current Git repository, lets you choose a remote
 and web frontend (including GitHub and GitLab), then opens the resulting
 repository URL.

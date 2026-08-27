@@ -1,0 +1,1 @@
+ryt now this a single file [main.go](main.go) , so distrubute in multiple file for better maintainablilty

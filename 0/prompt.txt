@@ -1,0 +1,1 @@
+for this project so when others try to build it they can use the specific version of go that i am using and also build and test commands and all related commands to this

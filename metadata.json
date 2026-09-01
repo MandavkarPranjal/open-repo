@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1DWDFAZRRT6G763CVM5R2E3",
   "strategy": "manual-commit",
   "branch": "pranjal/cli",
-  "checkpoints_count": 2,
+  "checkpoints_count": 4,
   "files_touched": [
     "mise.toml"
   ],
@@ -12,6 +12,12 @@
       "metadata": "/0/metadata.json",
       "transcript": "/0/full.jsonl",
       "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "content_hash": "/1/content_hash.txt",
       "prompt": ""
     }
   ]

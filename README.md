@@ -28,19 +28,47 @@ for development. Install mise, then run this from the repository root:
 mise install
 ```
 
-The pinned Go version is `1.26.6`. Available development commands are:
+The pinned Go version is `1.27.0`. Available development commands are:
 
 ```sh
 mise run build       # Build the binary
 mise run test        # Run all tests
-mise run check       # Check formatting, run tests, and run go vet
+mise run check       # Check formatting, tests, and static analysis
 mise run fmt         # Format Go source files
 mise run fmt-check   # Fail if formatting is needed
 mise run vet         # Run static analysis
+mise run lint        # Run golangci-lint
+mise run staticcheck # Run Staticcheck
 mise run run         # Run open-repo from source
 mise run install     # Install open-repo with go install
 mise run tidy        # Update go.mod and go.sum
 ```
+
+## Usage
+
+Run `open-repo` interactively, or specify a remote and frontend for scripts:
+
+```sh
+open-repo --remote origin --frontend GitHub --print-url
+open-repo --remote origin --frontend GitLab --dry-run
+open-repo --version
+```
+
+`--print-url` and `--dry-run` print the generated URL and do not start a
+browser. Run `open-repo --help` for the complete flag list.
+
+### Browser configuration
+
+`open-repo` first respects `$BROWSER`; it may include command-line arguments,
+for example `BROWSER="firefox --private-window"`. To configure a persistent
+browser command, create `~/.config/open-repo/config.toml`:
+
+```toml
+browser = "firefox --private-window"
+```
+
+`$BROWSER` takes precedence over this configuration. If neither is set,
+open-repo uses the platform's standard opener.
 
 You can also run the default Go commands directly after `mise install`:
 
@@ -65,4 +93,16 @@ GOOS=windows GOARCH=amd64 go build -o open-repo.exe .
 
 ```sh
 mise run check
+```
+
+To verify a downloaded release archive, download its matching `checksums.txt`
+asset from the same GitHub release and check the archive listed by GoReleaser:
+
+```sh
+tag=vX.Y.Z
+archive=open-repo_linux_amd64.tar.gz
+base="https://github.com/MandavkarPranjal/open-repo/releases/download/$tag"
+curl -fLO "$base/$archive"
+curl -fLO "$base/checksums.txt"
+grep -F "  $archive" checksums.txt | sha256sum -c -
 ```

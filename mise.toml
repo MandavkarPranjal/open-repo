@@ -1,10 +1,12 @@
 [tools]
 # Keep builds and tests reproducible across contributors and CI.
-go = "1.26.6"
+go = "1.27.0"
+golangci-lint = "2.13.2"
+staticcheck = "2026.2.1"
 
 [tasks.build]
 description = "Build the open-repo binary"
-run = "go build -o open-repo ."
+run = "go build -ldflags \"-X main.version=$(git describe --tags --always --dirty)\" -o open-repo ."
 
 [tasks.test]
 description = "Run all tests"
@@ -12,19 +14,27 @@ run = "go test ./..."
 
 [tasks.fmt]
 description = "Format all Go source files"
-run = "gofmt -w ."
+run = "gofmt -w $(git ls-files '*.go')"
 
 [tasks.fmt-check]
 description = "Check that Go source files are formatted"
-run = "test -z \"$(gofmt -l .)\""
+run = "test -z \"$(gofmt -l $(git ls-files '*.go'))\""
 
 [tasks.vet]
 description = "Run the Go static analyzer"
 run = "go vet ./..."
 
+[tasks.lint]
+description = "Run golangci-lint"
+run = "golangci-lint run ./..."
+
+[tasks.staticcheck]
+description = "Run Staticcheck"
+run = "staticcheck ./..."
+
 [tasks.check]
 description = "Run formatting, tests, and static analysis"
-depends = ["fmt-check", "test", "vet"]
+depends = ["fmt-check", "test", "vet", "lint", "staticcheck"]
 
 [tasks.run]
 description = "Run open-repo from source"

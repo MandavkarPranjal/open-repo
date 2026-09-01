@@ -14,11 +14,7 @@ var frontends = []string{"GitHub", "GitLab", "Better Hub", "OpenGit", "Codeberg"
 
 func selectItem(prompt string, choices []string, popup bool) (string, bool, error) {
 	if fzf, err := exec.LookPath("fzf"); err == nil {
-		args := []string{"--prompt=" + prompt, "--reverse"}
-		if !popup {
-			args = append(args, "--height=40%")
-		}
-		cmd := exec.Command(fzf, args...)
+		cmd := exec.Command(fzf, fzfArgs(prompt, popup)...)
 		cmd.Stdin = strings.NewReader(strings.Join(choices, "\n") + "\n")
 		out, err := cmd.Output()
 		if err != nil {
@@ -48,6 +44,14 @@ func selectItem(prompt string, choices []string, popup bool) (string, bool, erro
 		return "", false, errors.New("invalid selection")
 	}
 	return choices[n-1], true, nil
+}
+
+func fzfArgs(prompt string, popup bool) []string {
+	args := []string{"--prompt", prompt, "--reverse"}
+	if !popup {
+		args = append(args, "--height=40%")
+	}
+	return args
 }
 
 func indexOf(items []string, value string) int {
